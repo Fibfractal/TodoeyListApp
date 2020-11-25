@@ -73,6 +73,7 @@ function displayList(){
     
 
     toggleCheckItemInList();
+    deleteItemInList();
     currentCheckStatus();
 }
 
@@ -116,5 +117,18 @@ function currentCheckStatus(){
             $(listElements[index]).find(".fa-check").css("color", "rgba(31, 175, 175, 0.0)");
             $(listElements[index]).css("background-color", "rgba(31, 175, 175, 0.5)");
         }
+    }
+}
+
+function deleteItemInList(){
+    
+    let allDeleteSymbols = $(".fa-times");
+    
+    for (let index = 0; index < allDeleteSymbols.length; index++) {
+        $(allDeleteSymbols[index]).click(function(){
+            $(this).parent().remove();
+            items.splice(index,1);
+            displayList();
+        });
     }
 }
