@@ -68,5 +68,34 @@ function displayList(){
         </li>`);
     }
 
+    $(".fa-check").css("color", "rgba(31, 175, 175, 0.0)");
 
+    
+
+    toggleCheckItemInList();
+
+}
+
+function toggleCheckItemInList(){
+
+    let listElements = $(".list-element");
+
+    for (let index = 0; index < listElements.length; index++) {
+
+        $(listElements[index]).click(function(){
+            
+            if(!items[index].isChecked){
+                items[index].isChecked = true;
+                $(this).find(".item-text").css('textDecoration','line-through');
+                $(this).find(".fa-check").css("color", "white");
+                $(this).css("background-color", "rgba(0, 128, 128, 0.3)");
+            }
+            else {
+                items[index].isChecked = false;
+                $(this).find(".item-text").css('textDecoration','none');
+                $(this).find(".fa-check").css("color", "rgba(31, 175, 175, 0.0)");
+                $(this).css("background-color", "rgba(31, 175, 175, 0.5)");
+            }
+        });
+    }
 }
