@@ -73,7 +73,7 @@ function displayList(){
     
 
     toggleCheckItemInList();
-
+    currentCheckStatus();
 }
 
 function toggleCheckItemInList(){
@@ -97,5 +97,24 @@ function toggleCheckItemInList(){
                 $(this).css("background-color", "rgba(31, 175, 175, 0.5)");
             }
         });
+    }
+}
+
+function currentCheckStatus(){
+
+    let listElements = $(".list-element");
+
+    for (let index = 0; index < listElements.length; index++) {
+
+        if(items[index].isChecked){
+            $(listElements[index]).find(".item-text").css('textDecoration','line-through');
+            $(listElements[index]).find(".fa-check").css("color", "white");
+            $(listElements[index]).css("background-color", "rgba(0, 128, 128, 0.3)");
+        }
+        else {
+            $(listElements[index]).find(".item-text").css('textDecoration','none');
+            $(listElements[index]).find(".fa-check").css("color", "rgba(31, 175, 175, 0.0)");
+            $(listElements[index]).css("background-color", "rgba(31, 175, 175, 0.5)");
+        }
     }
 }
