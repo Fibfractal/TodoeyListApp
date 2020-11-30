@@ -13,26 +13,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
-    <title>Document</title>
+    <title>Todoey List-app</title>
 </head>
 <body>
-
     <main>
         <form id = "form">
-
             <h1>Todoey - List App</h3>
             <input id = "input-item" placeholder="Lägg till ny sak att göra här ...">
-            <button id = "button-add" type = "submit">Lägg till</button>
-
+            <button id = "button-add" onclick="addItemToList(event)" type = "submit">Lägg till</button>
         </form>
-
         <div id = "items-list">
-
             <ul id = "ul-list"></ul>
-
         </div>
-
     </main>
-    
 </body>
 </html>
