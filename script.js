@@ -22,15 +22,9 @@ function populateList(){
 populateList();
 displayList();
 
-$("#form").submit(function(event){
-    event.preventDefault();
-    addItemToList();
-    displayList();
-});
-
-
-function addItemToList(){
+function addItemToList(event){
     
+    event.preventDefault();
     let userInput = $("#input-item").val();
     
     if(checkItemNotEmpty()){
@@ -47,6 +41,7 @@ function addItemToList(){
     }
     
     $("#input-item").val("");
+    displayList();
 }
 
 function checkItemNotEmpty(){
