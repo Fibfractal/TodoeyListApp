@@ -23,8 +23,9 @@ populateList();
 displayList();
 
 function addItemToList(event){
-    
+
     event.preventDefault();
+    
     let userInput = $("#input-item").val();
     
     if(checkItemNotEmpty()){
@@ -48,7 +49,6 @@ function checkItemNotEmpty(){
     return $("#input-item").val() != "" ? true : false;
 }
 
-
 function displayList(){
 
     let list = $("#ul-list");
@@ -63,10 +63,6 @@ function displayList(){
         </li>`);
     }
 
-    $(".fa-check").css("color", "rgba(31, 175, 175, 0.0)");
-
-    
-
     toggleCheckItemInList();
     deleteItemInList();
     currentCheckStatus();
@@ -79,18 +75,16 @@ function toggleCheckItemInList(){
     for (let index = 0; index < listElements.length; index++) {
 
         $(listElements[index]).click(function(){
-            
+
+            $(this).find(".item-text").toggleClass("checker-text");
+            $(this).find(".fa-check").toggleClass("checker");
+            $(this).toggleClass("checker-background");
+
             if(!items[index].isChecked){
                 items[index].isChecked = true;
-                $(this).find(".item-text").css('textDecoration','line-through');
-                $(this).find(".fa-check").css("color", "white");
-                $(this).css("background-color", "rgba(0, 128, 128, 0.3)");
             }
             else {
                 items[index].isChecked = false;
-                $(this).find(".item-text").css('textDecoration','none');
-                $(this).find(".fa-check").css("color", "rgba(31, 175, 175, 0.0)");
-                $(this).css("background-color", "rgba(31, 175, 175, 0.5)");
             }
         });
     }
@@ -103,14 +97,10 @@ function currentCheckStatus(){
     for (let index = 0; index < listElements.length; index++) {
 
         if(items[index].isChecked){
-            $(listElements[index]).find(".item-text").css('textDecoration','line-through');
-            $(listElements[index]).find(".fa-check").css("color", "white");
-            $(listElements[index]).css("background-color", "rgba(0, 128, 128, 0.3)");
-        }
-        else {
-            $(listElements[index]).find(".item-text").css('textDecoration','none');
-            $(listElements[index]).find(".fa-check").css("color", "rgba(31, 175, 175, 0.0)");
-            $(listElements[index]).css("background-color", "rgba(31, 175, 175, 0.5)");
+
+            $(listElements[index]).find(".item-text").toggleClass("checker-text");
+            $(listElements[index]).find(".fa-check").toggleClass("checker");
+            $(listElements[index]).toggleClass("checker-background");
         }
     }
 }
@@ -127,3 +117,5 @@ function deleteItemInList(){
         });
     }
 }
+
+
